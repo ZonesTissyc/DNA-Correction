@@ -11,3 +11,11 @@
 ## 使用方法
 
 每一版包含头文件和源文件，需要自己在主函数中实现**FASTA**格式的读取，并存入**input**数组中。具体可参考**v2test.cpp**。
+
+编译
+
+`g++ v2test.cpp gagakill.cpp -o v2test`
+
+## 生成测试用例
+
+可使用**creatDNA**文件夹下的 `生成DNA.py` 程序生成用于测试的DNA序列，默认一行一条DNA。
