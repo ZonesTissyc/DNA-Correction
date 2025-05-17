@@ -1,5 +1,7 @@
 # DNA读段纠错
 
+[![Page Views Count](https://badges.toozhao.com/badges/01JVDW9QFDMFT9AS0HZK1EHQHE/green.svg)](https://badges.toozhao.com/stats/01JVDW9QFDMFT9AS0HZK1EHQHE "Get your own page views count badge on badges.toozhao.com")
+
 本仓库为HZAU的C++程序设计小组 **CppGagaKill**的课题项目。
 
 该项目主要解决DNA在测序仪器读段过程中错误读段的纠错。
