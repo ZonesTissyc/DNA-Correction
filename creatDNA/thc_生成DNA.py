@@ -1,11 +1,13 @@
 import random
-dicACGT = {0:"A",1:"C",2:"G",3:"T"}
+
 def creatonedna(lenth):
     dna=""
+    dicACGT = {0:"A",1:"C",2:"G",3:"T"}
     for i in range(lenth):
         dna+=dicACGT[random.randint(0,3)]
     return dna
 def craet_errordna(dna):
+    dicACGT = {0:"A",1:"C",2:"G",3:"T"}
     error_location = random.randint(0,DNAlenth-1)
     error_ACGT = dicACGT[random.randint(0,3)]
     error_ACGTlist = ["A","C","G","T"]
