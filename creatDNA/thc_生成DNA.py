@@ -1,21 +1,21 @@
 import random
-dicACGT = {0:"A",1:"C",2:"G",3:"T"}
+
 def creatonedna(lenth):
     dna=""
+    dicACGT = {0:"A",1:"C",2:"G",3:"T"}
     for i in range(lenth):
         dna+=dicACGT[random.randint(0,3)]
     return dna
+
 def craet_errordna(dna):
     error_location = random.randint(0,DNAlenth-1)
-    error_ACGT = dicACGT[random.randint(0,3)]
     error_ACGTlist = ["A","C","G","T"]
-    error_ACGTlist.remove(error_ACGT)
-    changed_ACGT = random.choice(error_ACGTlist)
+    error_ACGTlist.remove(dna[error_location])
+    changed_base = random.choice(error_ACGTlist)
     error_DNA = ""
-    error_DNA = dna[:error_location]+changed_ACGT+dna[error_location+1:] if error_location<DNAlenth-1 else dna[:error_location]+changed_ACGT
+    error_DNA = dna[:error_location]+changed_base+dna[error_location+1:] if error_location<DNAlenth-1 else dna[:error_location]+changed_base
     return error_DNA
     
-
 def reverseComplement(dna):
     complement = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
     return ''.join(complement.get(base, '') for base in reversed(dna))
@@ -24,6 +24,7 @@ def reverseComplement(dna):
 # 参数设置（修改这里的参数是安全的，其他参数慎重）
 DNAlenth = 50   # 设置单条DNA的长度,bp
 endDNA = 100000    # 设置想要生成的总条数
+error_rate = 0.2    # 设置出错的概率，取值 [0,1)
 
 # DNA数组的生成
 correct_list=[]
@@ -42,14 +43,14 @@ while(haveDNA<endDNA):
     for j in range(n):
         tlist.append(revDNA)
     correct_list.append(tlist)
-    if_error = random.randint(1,100)
-    if(40<=if_error<=43):
+    random_error = random.random()
+    if_error = False
+    if(random_error<= error_rate):
+        if_error = True
         AND = craet_errordna(DNA)
         error_list.append([groupDNA,AND,DNA])
     groupDNA+=1
-    haveDNA += m+n+bool(40<=if_error<=43)
-
-# fnew = open("dna.txt","w")
+    haveDNA += m+n+bool(if_error == True)
 
 # 正确数组与错误数组合并展开成一维数组
 one_list = []
@@ -57,7 +58,10 @@ for sublist in correct_list:
     one_list.extend(sublist)
 for sub_error in error_list:
     one_list.append(sub_error[1])
-print(haveDNA,len(one_list),len(error_list))
+# print(haveDNA,len(one_list),len(error_list))
+print(f"DNA总条数：\t{haveDNA}")
+print(f"DNA组：\t\t{groupDNA}")
+print(f"错误DNA数量：\t{len(error_list)}")
 random.shuffle(one_list)    # 随机打乱
 
 # 写入文件
