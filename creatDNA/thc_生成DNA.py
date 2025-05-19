@@ -8,6 +8,7 @@ def creatonedna(lenth):
     return dna
 
 def craet_errordna(dna):
+    dicACGT = {0:"A",1:"C",2:"G",3:"T"}
     error_location = random.randint(0,DNAlenth-1)
     error_ACGTlist = ["A","C","G","T"]
     error_ACGTlist.remove(dna[error_location])
