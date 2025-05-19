@@ -76,14 +76,12 @@ for sub_DNA in one_list:
     fnew1.write(">GagakillGroup"+str(num_fasta)+'\n')
     fnew1.write(sub_DNA+'\n')
 
-error_filename = "errorDNA_"+str(DNAlenth)+"bp"+"_"+str(endDNA)+'_'+str(filelabel)+".txt"
+error_filename = "errorDNA_"+str(DNAlenth)+"bp"+"_"+str(endDNA)+'_'+str(len(error_list))+"error"+"_"+str(filelabel)+".txt"
 fnew2 = open(error_filename,"w")
 
-b = 0
 for sub_error in error_list:
     fnew2.write(sub_error[1]+"->"+sub_error[2]+'\n')
-    b+=1
-fnew2.write("errorDNA="+str(b))
+
 
 
 
